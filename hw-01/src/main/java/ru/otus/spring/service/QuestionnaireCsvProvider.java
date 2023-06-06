@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 public class QuestionnaireCsvProvider implements QuestionnaireProvider {
     private static final Logger LOGGER = LoggerFactory.getLogger(QuestionnaireCsvProvider.class);
+
     private final String path;
 
     public QuestionnaireCsvProvider(String path) {
