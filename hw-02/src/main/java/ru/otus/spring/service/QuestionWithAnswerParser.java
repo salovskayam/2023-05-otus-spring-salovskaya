@@ -9,12 +9,15 @@ public class QuestionWithAnswerParser implements QuestionParser {
 
     private static final String DELIMITER = ", ";
 
-    public Questionnaire parse(String question) {
-        return getQuestionnaire(List.of(question.split(DELIMITER)));
+    public Questionnaire parse(String text) {
+        String[] questionWithAnswer = text.split(DELIMITER);
+        return getQuestionnaire(List.of(questionWithAnswer));
     }
 
-    private Questionnaire getQuestionnaire(List<String> question) {
-        return new Questionnaire(question.get(0), question.size() > 1 ?
-                question.subList(1, question.size()) : Collections.emptyList());
+    private Questionnaire getQuestionnaire(List<String> questionWithAnswer) {
+        String question = questionWithAnswer.get(0);
+        List<String> answers = questionWithAnswer.size() > 1 ?
+                questionWithAnswer.subList(1, questionWithAnswer.size()) : Collections.emptyList();
+        return new Questionnaire(question, answers);
     }
 }

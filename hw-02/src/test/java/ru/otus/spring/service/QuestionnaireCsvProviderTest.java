@@ -2,13 +2,13 @@ package ru.otus.spring.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import ru.otus.spring.dao.QuestionnaireCsvProvider;
+import ru.otus.spring.dao.QuestionnaireProvider;
 import ru.otus.spring.domain.Questionnaire;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 class QuestionnaireCsvProviderTest {
 
@@ -21,14 +21,11 @@ class QuestionnaireCsvProviderTest {
         questionParser = new QuestionWithAnswerParser();
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"wrong path", "csv/blankFile.csv"})
-    void shouldReturnQuestionsEmptyList(String path) {
-        questionnaireProvider = new QuestionnaireCsvProvider(path, questionParser);
+    @Test
+    void shouldReturnQuestionsEmptyList() {
+        questionnaireProvider = new QuestionnaireCsvProvider("wrong_path", questionParser);
 
-        List<Questionnaire> questionnaires = questionnaireProvider.get();
-
-        assertThat(questionnaires).isEmpty();
+        assertThatThrownBy(() -> questionnaireProvider.get()).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
