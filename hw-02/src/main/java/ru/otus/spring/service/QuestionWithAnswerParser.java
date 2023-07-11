@@ -1,14 +1,17 @@
 package ru.otus.spring.service;
 
+import org.springframework.stereotype.Component;
 import ru.otus.spring.domain.Questionnaire;
 
 import java.util.Collections;
 import java.util.List;
 
+@Component
 public class QuestionWithAnswerParser implements QuestionParser {
 
     private static final String DELIMITER = ", ";
 
+    @Override
     public Questionnaire parse(String text) {
         String[] questionWithAnswer = text.split(DELIMITER);
         return getQuestionnaire(List.of(questionWithAnswer));

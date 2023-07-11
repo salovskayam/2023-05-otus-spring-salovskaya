@@ -1,11 +1,13 @@
 package ru.otus.spring.service;
 
+import org.springframework.stereotype.Component;
 import ru.otus.spring.dao.QuestionnaireProvider;
 import ru.otus.spring.domain.Questionnaire;
 import ru.otus.spring.domain.StudentTestResult;
 
 import java.util.List;
 
+@Component
 public class QuestionnaireRunner {
 
     private final QuestionnaireProvider questionnaireProvider;

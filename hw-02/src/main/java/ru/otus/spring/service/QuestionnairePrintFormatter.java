@@ -1,10 +1,12 @@
 package ru.otus.spring.service;
 
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import ru.otus.spring.domain.Questionnaire;
 
 import java.util.List;
 
+@Component
 public class QuestionnairePrintFormatter implements QuestionnaireFormatter {
     @Override
     public String format(Questionnaire questionnaire) {

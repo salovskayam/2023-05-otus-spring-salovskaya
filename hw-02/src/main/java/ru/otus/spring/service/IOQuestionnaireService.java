@@ -3,6 +3,7 @@ package ru.otus.spring.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import ru.otus.spring.domain.Questionnaire;
 import ru.otus.spring.domain.Student;
@@ -13,6 +14,7 @@ import ru.otus.spring.service.utils.QuestionnaireUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class IOQuestionnaireService implements QuestionnaireService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IOQuestionnaireService.class);
