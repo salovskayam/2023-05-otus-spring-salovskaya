@@ -67,14 +67,10 @@ public class IOQuestionnaireService implements QuestionnaireService {
     }
 
     private int handleStudentAnswer(Questionnaire q) {
-        try {
-            String output = printFormatter.format(q);
-            int input = ioService.readIntWithPrompt(output);
-            QuestionnaireUtil.checkAnswer(q.answers().size(), input);
-            return input;
-        } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException("Value is invalid");
-        }
+        String output = printFormatter.format(q);
+        int input = ioService.readIntWithPrompt(output);
+        QuestionnaireUtil.checkAnswer(q.answers().size(), input);
+        return input;
     }
 
     private boolean getStudentResult(StudentTestResult testResult) {
